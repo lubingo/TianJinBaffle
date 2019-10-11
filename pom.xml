@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.guojin</groupId>
     <artifactId>baffle</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>baffle</name>
     <description>Demo project for Spring Boot</description>
 
