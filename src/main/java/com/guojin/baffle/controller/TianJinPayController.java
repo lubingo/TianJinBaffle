@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 
@@ -77,12 +75,13 @@ public class TianJinPayController {
     }
 
     @RequestMapping(value = "/toPrint" ,method = {RequestMethod.GET,RequestMethod.POST})
-    public void toPrint(String fileType ,String printName ,String token ,String ...fileUrls ){
+    public void toPrint(String fileType , String printName , String token , String fileUrls ){
         log.info("fileType={}",fileType);log.info("printName={}",printName);log.info("fileUrls={}",fileUrls);
+        String[] strList = fileUrls.split(",") ;
         Map  map = new HashMap();
         map.put("fileType",fileType);
         map.put("printName",printName);
-        map.put("fileUrls",fileUrls);
+        map.put("fileUrls",strList);
         MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<>();
         paramMap.add("msg" , map );
         restTemplate.postForObject("http://172.21.98.97:8085/print/invoiceOrDeliveryOrder" ,paramMap,String.class);
