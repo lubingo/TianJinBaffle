@@ -47,9 +47,9 @@ public class TianJinPayController {
 
 
         paramMap.add("Plain",stringBuilder.toString());
-        restTemplate.postForObject("https://testtjbank.guojingold.com/api/tjpay/baffleUse" ,paramMap,String.class);
+        restTemplate.postForObject("http://192.168.17.73:7010/api/tjpay/baffleUse" ,paramMap,String.class);
         log.info("调用挡板成功！");
-        return "\"https://testtjbank.guojingold.com/template/paySuccess.html\"";
+        return "\"http://192.168.17.73:7010/template/paySuccess.html\"";
     }
 
     @RequestMapping(value = "/test" ,method = {RequestMethod.GET,RequestMethod.POST})
